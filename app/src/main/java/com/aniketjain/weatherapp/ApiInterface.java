@@ -1,7 +1,7 @@
 package com.aniketjain.weatherapp;
 
 import com.aniketjain.weatherapp.models.WeatherResponse;
-
+import com.aniketjain.weatherapp.models.ForecastResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

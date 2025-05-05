@@ -9,8 +9,16 @@ import com.aniketjain.weatherapp.models.WeatherResponse;
 
 public class HomeActivity extends AppCompatActivity {
     private ApiInterface apiInterface;
+    private WeatherResponse lastResponse;
 
-    @Override
+    private void showWeather(WeatherResponse response) {
+        lastResponse = response; // Cache
+        runOnUiThread(() -> {
+            ((TextView)findViewById(R.id.temp)).setText(response.getMain().getTemp() + "°C");
+        });
+
+
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
