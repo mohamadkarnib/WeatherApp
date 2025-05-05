@@ -2,6 +2,13 @@ plugins {
     id 'com.android.application'
 }
 
+// Load local.properties at the project level
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localProperties.load(new FileInputStream(localPropertiesFile))
+}
+
 android {
     compileSdk 33
 
@@ -12,24 +19,34 @@ android {
         versionCode 5
         versionName "1.0.5"
         multiDexEnabled true
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Set API key from local properties
+        buildConfigField "String", "WEATHER_API_KEY", "\"${localProperties.getProperty('WEATHER_API_KEY', '')}\""
+        resValue "string", "api_key", "\"${localProperties.getProperty('WEATHER_API_KEY', '')}\""
     }
 
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Uses the same API key as defaultConfig
+        }
+        debug {
+            // Uses the same API key as defaultConfig
         }
     }
+
     buildFeatures {
         viewBinding true
-        buildConfig = true
+        buildConfig true
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     namespace 'com.aniketjain.weatherapp'
 }
 
