@@ -1,38 +1,25 @@
 package com.aniketjain.weatherapp.models;
-// At the top of both model classes
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
 
 public class WeatherResponse {
-    @SerializedName("main")
-    public Main main;
+    private Main main;
 
-    @SerializedName("weather")
-    public List<Weather> weather;
-
-    @SerializedName("name")
-    public String cityName;
-
-    public class Main {
-        @SerializedName("temp")
-        public double temperature;
-
-        @SerializedName("humidity")
-        public int humidity;
-
-        @SerializedName("temp_min")
-        public double tempMin;
-
-        @SerializedName("temp_max")
-        public double tempMax;
+    public Main getMain() {
+        return main;
     }
 
-    public class Weather {
-        @SerializedName("description")
-        public String description;
+    public void setMain(Main main) {
+        this.main = main;
+    }
 
-        @SerializedName("icon")
-        public String icon;
+    public class Main {
+        private double temp;
+
+        public double getTemp() {
+            return temp;
+        }
+
+        public void setTemp(double temp) {
+            this.temp = temp;
+        }
     }
 }
