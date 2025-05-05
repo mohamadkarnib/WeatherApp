@@ -36,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void fetchWeather(String city) {
-        apiInterface.getCurrentWeather(city, BuildConfig.WEATHER_API_KEY)
+        apiInterface.getCurrentWeather(city, BuildConfig.WEATHER_API_KEY, "metric")
                 .enqueue(new Callback<WeatherResponse>() {
                     @Override
                     public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
