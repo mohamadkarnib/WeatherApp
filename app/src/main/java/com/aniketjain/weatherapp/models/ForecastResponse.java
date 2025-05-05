@@ -1,7 +1,7 @@
-package com.aniketjain.weatherapp;
+package com.aniketjain.weatherapp.models;
 // At the top of both model classes
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class ForecastResponse {

@@ -2,35 +2,32 @@ package com.aniketjain.weatherapp;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 // Delete the nested interface from MainActivity and import the new one:
-import com.aniketjain.weatherapp.ApiInterface;  // Update with your package
 
 
-import com.aniketjain.weatherapp.adapter.DaysAdapter;
-
-import java.util.Arrays;
-import java.util.List;
+import com.aniketjain.weatherapp.models.WeatherResponse;
 
 public class HomeActivity extends AppCompatActivity {
-
-    private RecyclerView daysRecyclerView;
+    private ApiInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_main);
 
-        // Corrected ID to match XML
-        daysRecyclerView = findViewById(R.id.day_rv);
-        daysRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.openweathermap.org/data/2.5/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-        List<String> days = Arrays.asList("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun");
+        apiInterface = retrofit.create(ApiInterface.class);
+        fetchWeather("London"); // Test with default city
+    }
 
-        // Pass the context and the list of days to the DaysAdapter
-        DaysAdapter adapter = new DaysAdapter(this, days);
-
-        daysRecyclerView.setAdapter(adapter);
+    private void fetchWeather(String city) {
+        apiInterface.getCurrentWeather(city, BuildConfig.WEATHER_API_KEY)
+                .enqueue(new Callback<WeatherResponse>() {
+                    // Handle response
+                });
     }
 }
