@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Day</string> <!-- Corrected to title case -->
+    <string name="pressure">Pressure</string> <!-- Corrected to title case -->
+    <string name="wind">Wind</string> <!-- Corrected to title case -->
+    <string name="humidity">Humidity</string> <!-- Corrected to title case -->
+    <string name="enter_city_name">Enter city name</string> <!-- Corrected to title case -->
+    <string name="updated_at">Updated at</string> <!-- Corrected to title case -->
+</resources>

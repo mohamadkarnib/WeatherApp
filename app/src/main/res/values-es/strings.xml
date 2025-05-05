@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pronóstico del tiempo</string>
+    <string name="humidity">Humedad</string> <!-- Corrected capitalization -->
+    <string name="wind">Viento</string> <!-- Corrected capitalization -->
+    <string name="pressure">Presión</string> <!-- Corrected capitalization -->
+    <string name="day">Día</string> <!-- Corrected capitalization -->
+    <string name="enter_city_name">Ingrese el nombre de la ciudad</string> <!-- Improved phrasing -->
+    <string name="updated_at">Actualizado el</string> <!-- Corrected phrasing -->
+    <string name="monday">Lunes</string>
+    <string name="tuesday">Martes</string>
+    <string name="wednesday">Miércoles</string>
+    <string name="thursday">Jueves</string>
+    <string name="friday">Viernes</string>
+    <string name="saturday">Sábado</string>
+    <string name="sunday">Domingo</string>
+</resources>
