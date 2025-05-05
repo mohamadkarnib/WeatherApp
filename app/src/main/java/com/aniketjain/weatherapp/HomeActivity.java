@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 // Delete the nested interface from MainActivity and import the new one:
-import com.example.weatherapp.ApiInterface;  // Update with your package
+import com.aniketjain.weatherapp.ApiInterface;  // Update with your package
 
 
 import com.aniketjain.weatherapp.adapter.DaysAdapter;
