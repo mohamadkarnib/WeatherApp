@@ -1,11 +1,14 @@
 package com.aniketjain.weatherapp;
 
 import android.os.Bundle;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-// Delete the nested interface from MainActivity and import the new one:
-
-
 import com.aniketjain.weatherapp.models.WeatherResponse;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomeActivity extends AppCompatActivity {
     private ApiInterface apiInterface;
@@ -16,9 +19,9 @@ public class HomeActivity extends AppCompatActivity {
         runOnUiThread(() -> {
             ((TextView)findViewById(R.id.temp)).setText(response.getMain().getTemp() + "°C");
         });
+    }
 
-
-        @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -35,7 +38,17 @@ public class HomeActivity extends AppCompatActivity {
     private void fetchWeather(String city) {
         apiInterface.getCurrentWeather(city, BuildConfig.WEATHER_API_KEY)
                 .enqueue(new Callback<WeatherResponse>() {
-                    // Handle response
+                    @Override
+                    public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
+                        if (response.isSuccessful()) {
+                            showWeather(response.body());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<WeatherResponse> call, Throwable t) {
+                        // Handle failure (e.g., show an error message)
+                    }
                 });
     }
 }
